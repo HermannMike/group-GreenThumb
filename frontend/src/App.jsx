@@ -7,7 +7,7 @@ import RemindersPage from "./pages/RemindersPage";
 import LoginForm from "./components/auth/LoginForm";
 import RegisterForm from "./components/auth/RegisterForm";
 import { AuthProvider } from "./context/AuthContext";
-//import NotFound from "./pages/NotFound";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   return (
