@@ -1,11 +1,8 @@
-import React from 'react';
+const ReminderItem = ({ reminder, onDelete }) => (
+  <li>
+    {reminder.text} - {reminder.date}
+    <button onClick={() => onDelete(reminder.id)}>Delete</button>
+  </li>
+);
 
-const ReminderList = () => {
-  return (
-    <div>
-      <h2>Reminder List</h2>
-    </div>
-  );
-};
-
-export default ReminderList;
+export default ReminderItem;
