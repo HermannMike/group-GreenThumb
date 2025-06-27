@@ -37,6 +37,26 @@ const Navbar = () => {
             Plants
           </NavLink>
         </li>
+        <li style={styles.navItem}>
+          <NavLink
+            to="/login"
+            style={({ isActive }) =>
+              isActive ? { ...styles.navLink, ...styles.activeNavLink } : styles.navLink
+            }
+          >
+            Login
+          </NavLink>
+        </li>
+        <li style={styles.navItem}>
+          <NavLink
+            to="/signup"
+            style={({ isActive }) =>
+              isActive ? { ...styles.navLink, ...styles.activeNavLink } : styles.navLink
+            }
+          >
+            Sign Up
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
