@@ -1,14 +1,16 @@
-from app import db
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
 from werkzeug.security import generate_password_hash, check_password_hash
+from .base import Base
 
-class User(db.Model):
+class User(Base):
     __tablename__ = 'users'
 
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    password_hash = db.Column(db.String(128))
+    id = Column(Integer, primary_key=True)
+    username = Column(String(80), unique=True, nullable=False)
+    password_hash = Column(String(128))
 
-    plants = db.relationship('Plant', backref='user', lazy=True)
+    plants = relationship('Plant', back_populates='user')
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
