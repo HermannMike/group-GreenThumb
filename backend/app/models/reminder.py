@@ -1,12 +1,16 @@
-from app import db
+from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
+from .base import Base
 
-class Reminder(db.Model):
+class Reminder(Base):
     __tablename__ = 'reminders'
 
-    id = db.Column(db.Integer, primary_key=True)
-    reminder_type = db.Column(db.String(50), nullable=False)
-    frequency = db.Column(db.String(50), nullable=False)
-    plant_id = db.Column(db.Integer, db.ForeignKey('plants.id'), nullable=False)
+    id = Column(Integer, primary_key=True)
+    reminder_type = Column(String(50), nullable=False)
+    frequency = Column(String(50), nullable=False)
+    plant_id = Column(Integer, ForeignKey('plants.id'), nullable=False)
+
+    plant = relationship('Plant', back_populates='reminders')
 
     def __repr__(self):
         return f'<Reminder {self.reminder_type} for plant {self.plant_id}>'
